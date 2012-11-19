@@ -1,0 +1,14 @@
+<%#encoding:utf-8 %>
+<div class="hero-unit">
+  <h1>El blog</h1>
+</div>
+
+<%= link_to "Crear nuevo post", new_post_path , class: "btn btn-success" %>
+
+<h2> Listado de posts </h2>
+<% @posts.each do |posts| %>
+	<p><%= posts.content %></p>
+	<%= time_ago_in_words(posts.created_at, post) %>
+<% end %>
+
+
