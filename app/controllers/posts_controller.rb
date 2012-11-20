@@ -25,8 +25,18 @@ class PostsController < ApplicationController
     end
   end
 
-  def delete
-  	 
+  def create
+    @post = Post.new(params[:post])
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to @post, notice: 'post creado.' }
+        format.json { render json: @post, post: :created, location: @post }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @post.errors, post: :unprocessable_entity }
+      end
+    end
   end
 
 end

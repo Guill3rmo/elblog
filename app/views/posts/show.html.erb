@@ -1,2 +1,43 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<div class="hero-unit">
+  <h1><%= @post.title %></h1>
+</div>
+
+
+	<div class = "post">		  		
+  		<strong>Contenido del blog:</strong>
+		<p><%= @post.content %></b>
+	</div>
+
+<h2>Comentarios de visitantes</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+  <b>Visitante:</b>
+  <%= comment.visitor %>
+  </p>
+  
+  <p>
+  <b>Comment:</b>
+  <%= comment.message %>
+  </p>
+<% end %>
+
+	
+<strong>Escriba su comentario:</strong>
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <div class="field">
+  <%= f.label "Visitante" %><br />
+  <%= f.text_field :visitor %>
+  </div>
+  <div class="field">
+  <%= f.label "Mensaje" %><br />
+  <%= f.text_area :message %>
+  </div>
+  <div class="actions">
+  <%= f.submit %>
+  </div>
+<% end %>
+  		 
+<%= link_to 'volver', posts_path %>
+

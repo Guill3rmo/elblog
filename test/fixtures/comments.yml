@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  visitor: MyString
+  message: MyText
+  id_post: 
+
+two:
+  visitor: MyString
+  message: MyText
+  id_post: 
