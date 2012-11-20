@@ -17,13 +17,13 @@
     <hr>
    
       
-        <%= simple_form_for([@post, @post.comments.build]) do |f| %>
+        <%= simple_form_for([@post, @post.comments.new]) do |f| %>
           <div class="field">
           <%=f.input :visitor, :label => 'Autor: '  %><br />
           
           </div>
           <div class="field">
-          <%= f.input :message, :label => 'Escriba su comentario' %><br />
+          <%= f.input :message, :label => 'Escriba su comentario', :input_html => { class: "text_area_custom" }  %><br />
          
           </div>
           <div class="actions">
@@ -32,20 +32,21 @@
         <% end %>
       
     
-      <% @comments = Comment.all(:order => "created_at DESC", :conditions => ["created_at <= ?", Time.now]) %>
+    
       
       <% @post.comments.each do |comment| %>
+        <% unless comment.new_record? %>
           <div class ="comments">
               <p>
-              <b>Visitante:</b>
+              <strong>Visitante:</strong>
               <%= comment.visitor %>
               </p>
               <p>
-              <b>Comment:</b>
+              <strong>Comment:</strong>
               <%= comment.message %> 
             </div>
+          <% end %>
         <% end %>
-      
  
   </div>
 </div>
