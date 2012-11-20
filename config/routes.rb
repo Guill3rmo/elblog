@@ -2,6 +2,8 @@ Elblog::Application.routes.draw do
    
 
 
+devise_for :bloggers
+
 resources :posts do 
   resources :comments
 end

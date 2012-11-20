@@ -3,18 +3,19 @@
   <h1>El blog de Guille</h1>
 </div>
 
-<%= link_to "Crear nuevo post", new_post_path , class: "btn btn-success" %>
+<% if blogger_signed_in? %>
+  <%= link_to "Crear nuevo post", new_post_path , class: "btn btn-success" %>
+<% end %>
 
 <% @posts = Post.all(:order => "created_at DESC", :conditions => ["created_at <= ?", Time.now]) %>
 <% @posts.each do |post| %>
   <div class = "posts" >
     <p>Tema: <%= post.title %></p>
+     <p>Creado por: <%= post.blogger.full_name %></p>
       <div class = "class">
         <%= time_ago_in_words(post.created_at) + " después" %> |
         <%= link_to "Mostrar", post %>
         <span class="admin" >
-         
-         
         </span>
       </div>
   </div>

@@ -10,24 +10,27 @@
 <div class = "navbar navbar-fixed-top" >
 	<div class = "navbar-inner">
 		<div class = "container">
-			<a href="#" class = "brand">Inicio</a>
-				<ul class = "nav">
-			
-				</ul>
-
-				<ul class = "nav pull-right">
-				
+			<a href="" class = "brand">Inicio</a>
+			 <ul class = "nav pull-right">
+				<% if blogger_signed_in? %>
+						<li><%= link_to current_blogger.full_name, edit_blogger_registration_path %></li>
+						<li><%= link_to "Cerrar sesion" ,destroy_blogger_session_path, method: :delete %></li>
+				<% else %>
+						<li><%= link_to "Registrarse", new_blogger_registration_path %></li>
+						<li><%= link_to "Iniciar sesion", new_blogger_session_path %></li>
+				<% end %>
 				</ul>
 		</div>
 	</div>
 </div>
 
 	<div class = "container">
-
-		
-	
-		
-
+			<% flash.each do |type, message| %>
+		<div class = "alert <%= flash_class type %>" >
+    		<button class="close" data-dismiss = "alert" >x</button> 
+			<%= message %>
+		</div>
+		<% end %>
 		<%= yield %>
 	</div>
 

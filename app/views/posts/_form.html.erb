@@ -10,6 +10,8 @@
       </ul>
     </div>
   <% end %>
+  <%=f.hidden_field :blogger_id, :value => current_blogger.id %>
+ 
   <%= f.input :title %>
   <%= f.input :content %>
   <div class="form-actions">

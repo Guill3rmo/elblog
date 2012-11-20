@@ -6,8 +6,8 @@
 development:
   adapter:  postgresql
   database: elblog_dev
-  username: postgres
-  password: 123
+  #username: postgres
+  #password: 123
   pool: 5
   timeout: 5000
 

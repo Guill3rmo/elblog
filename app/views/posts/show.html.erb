@@ -6,38 +6,51 @@
 
 
 	<div class = "post">		  		
-  		<strong>Contenido del blog:</strong>
+  		<h2>Tema:</h2>
 		<p><%= @post.content %></b>
 	</div>
 
-<h2>Comentarios de visitantes</h2>
-<% @post.comments.each do |comment| %>
-  <p>
-  <b>Visitante:</b>
-  <%= comment.visitor %>
-  </p>
-  
-  <p>
-  <b>Comment:</b>
-  <%= comment.message %>
-  </p>
-<% end %>
+<div class="row-fluid">
+  <div class="span12">
+   
+    <h2>Comentarios de visitantes</h2>
+    <hr>
+   
+      
+        <%= simple_form_for([@post, @post.comments.build]) do |f| %>
+          <div class="field">
+          <%=f.input :visitor, :label => 'Autor: '  %><br />
+          
+          </div>
+          <div class="field">
+          <%= f.input :message, :label => 'Escriba su comentario' %><br />
+         
+          </div>
+          <div class="actions">
+          <%= f.button :submit %>
+          </div>
+        <% end %>
+      
+    
+      <% @comments = Comment.all(:order => "created_at DESC", :conditions => ["created_at <= ?", Time.now]) %>
+      
+      <% @post.comments.each do |comment| %>
+          <div class ="comments">
+              <p>
+              <b>Visitante:</b>
+              <%= comment.visitor %>
+              </p>
+              <p>
+              <b>Comment:</b>
+              <%= comment.message %> 
+            </div>
+        <% end %>
+      
+ 
+  </div>
+</div>
 
 	
-<strong>Escriba su comentario:</strong>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-  <%= f.label "Visitante" %><br />
-  <%= f.text_field :visitor %>
-  </div>
-  <div class="field">
-  <%= f.label "Mensaje" %><br />
-  <%= f.text_area :message %>
-  </div>
-  <div class="actions">
-  <%= f.submit %>
-  </div>
-<% end %>
   		 
 <%= link_to 'volver', posts_path %>
 

@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120023107) do
+ActiveRecord::Schema.define(:version => 20121120101257) do
+
+  create_table "bloggers", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "full_name"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "blogger_id"
+  end
+
+  add_index "bloggers", ["blogger_id"], :name => "index_bloggers_on_blogger_id"
+  add_index "bloggers", ["email"], :name => "index_bloggers_on_email", :unique => true
+  add_index "bloggers", ["reset_password_token"], :name => "index_bloggers_on_reset_password_token", :unique => true
 
   create_table "comments", :force => true do |t|
     t.string   "visitor"
@@ -28,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20121120023107) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "blogger_id"
   end
 
 end
