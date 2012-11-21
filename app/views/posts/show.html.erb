@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <div class="hero-unit">
-  <h1><%= @post.title %></h1>
+  <h1><%= markdown(@post.title) %></h1>
 </div>
 
 
 	<div class = "post">		  		
   		<h2>Tema:</h2>
-		<p><%= @post.content %></b>
+		<p><%= markdown(@post.content) %></b>
 	</div>
 
 <div class="row-fluid">
@@ -23,7 +23,7 @@
           
           </div>
           <div class="field">
-          <%= f.input :message, :label => 'Escriba su comentario', :input_html => { class: "text_area_custom" }  %><br />
+          <%=  f.input :message, :label => 'Escriba su comentario', :input_html => { class: "text_area_custom" }  %><br />
          
           </div>
           <div class="actions">
@@ -43,7 +43,7 @@
               </p>
               <p>
               <strong>Comment:</strong>
-              <%= comment.message %> 
+              <%=  comment.message %> 
             </div>
           <% end %>
         <% end %>

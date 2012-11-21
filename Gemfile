@@ -5,9 +5,10 @@ gem 'rails', '3.1.0'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'simple_form'
-gem 'devise'
+gem 'pg' , '0.14.1'
+gem 'simple_form' , '2.0.4'
+gem 'devise' , '2.1.2'
+gem 'redcarpet' , '2.2.2'
 
 
 # Gems used only for assets and not required

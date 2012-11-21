@@ -93,6 +93,7 @@ GEM
     rake (10.0.2)
     rdoc (3.12)
       json (~> 1.4)
+    redcarpet (2.2.2)
     sass (3.2.3)
     sass-rails (3.1.6)
       actionpack (~> 3.1.0)
@@ -126,11 +127,12 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.1.0)
-  devise
+  devise (= 2.1.2)
   jquery-rails
-  pg
+  pg (= 0.14.1)
   rails (= 3.1.0)
+  redcarpet (= 2.2.2)
   sass-rails (~> 3.1.0)
-  simple_form
+  simple_form (= 2.0.4)
   turn
   uglifier
