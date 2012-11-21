@@ -1,10 +1,8 @@
 Elblog::Application.routes.draw do
    
+devise_for :bloggers, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 
-devise_for :bloggers do
-  resources :posts
-end
 resources :posts do 
   resources :comments
 end

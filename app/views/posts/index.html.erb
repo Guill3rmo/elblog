@@ -10,7 +10,7 @@
 <% @posts = Post.all(:order => "created_at DESC", :conditions => ["created_at <= ?", Time.now]) %>
 <% @posts.each do |post| %>
   <div class = "posts" >
-    <p>Tema: <%= post.title %></p>
+    <p>Tema: <%= markdown(post.title) %></p>
      <p>Creado por: <%= post.blogger.full_name %></p>
       <div class = "class">
         <%= time_ago_in_words(post.created_at) + " después" %> |

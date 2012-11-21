@@ -1,7 +1,22 @@
 <p id="notice"><%= notice %></p>
-
+<!--Those are the script for, tweet, for like on facebook and share -->
 <div class="hero-unit">
   <h1><%= markdown(@post.title) %></h1>
+  <p><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+ <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-href="<%= post_url(@post) %>" data-send="true" data-width<="450" data-show-faces="true"></div>
+<p>
 </div>
 
 

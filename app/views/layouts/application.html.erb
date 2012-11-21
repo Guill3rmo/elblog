@@ -17,6 +17,7 @@
 						<li><%= link_to "Cerrar sesion" ,destroy_blogger_session_path, method: :delete %></li>
 				<% else %>
 						<li><%= link_to "Registrarse", new_blogger_registration_path %></li>
+						<li><%= link_to "Sign in with Facebook", blogger_omniauth_authorize_path(:facebook) %></li>
 						<li><%= link_to "Iniciar sesion", new_blogger_session_path %></li>
 				<% end %>
 				</ul>

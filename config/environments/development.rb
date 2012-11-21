@@ -28,4 +28,7 @@ Elblog::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  FACEBOOK_KEY ='172778072866464' 
+  FACEBOOK_SECRET = '623084edc02242c238f19d15696bee24'
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120101257) do
+ActiveRecord::Schema.define(:version => 20121121171331) do
 
   create_table "bloggers", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20121120101257) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "blogger_id"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "bloggers", ["blogger_id"], :name => "index_bloggers_on_blogger_id"
