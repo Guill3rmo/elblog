@@ -12,6 +12,7 @@ gem 'redcarpet' , '2.2.2'
 gem 'omniauth', '1.1.1'
 gem 'omniauth-facebook', '1.4.0'
 gem "paperclip", "~> 3.0"
+gem "kaminari"
 
 
 

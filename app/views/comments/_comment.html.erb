@@ -1,0 +1,11 @@
+<% unless comment.new_record? %>
+  <div class ="comments">
+    <p>
+      <strong>Visitante:</strong>
+      <%= comment.visitor %>
+    </p>
+    <p>
+      <strong>Comment:</strong>
+      <%=  comment.message %> 
+  </div>
+<% end %>
