@@ -16,7 +16,16 @@
         <%= time_ago_in_words(post.created_at) + " después" %> |
         <%= link_to "Mostrar", post %>
         <span class="admin" >
+          <span class="admin" >
+            <% if blogger_signed_in? %>
+           
+            |<%= link_to "Editar", edit_post_path(post) %> |
+           
+
+          <% end %>
+        </span>
         </span>
       </div>
   </div>
 <% end %>
+

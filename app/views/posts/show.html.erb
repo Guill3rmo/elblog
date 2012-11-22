@@ -3,7 +3,7 @@
 <div class="hero-unit">
   <h1><%=  @post.title %></h1>
 
-  <% val = post_url(@post) %>
+  
   <p><a href="https://twitter.com/share" class="twitter-share-button" data-ulr="<%=post_url(@post)%>" data-hashtags="<%= @post.title %>"  data-lang="en" data-count="none">Tweet</a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
@@ -19,6 +19,8 @@
 
 	<div class = "post">		  		
   		<h2>Tema:</h2>
+      <%= image_tag @post.image.url(:small)%>
+      
 		<p><%= markdown(@post.content) %></b>
 	</div>
 
@@ -29,7 +31,15 @@
     <hr>
    
       
-        <%= simple_form_for([@post, @post.comments.new]) do |f| %>
+        
+      
+    <div class="row-fluid">
+      <div class="span12">
+        Fluid 12
+        <div class="row-fluid">
+          <div class="span6">
+            
+          <%= simple_form_for([@post, @post.comments.new]) do |f| %>
           <div class="field">
           <%=f.input :visitor, :label => 'Autor: '  %><br />
           
@@ -42,13 +52,12 @@
           <%= f.button :submit %>
           </div>
         <% end %>
-      
-    
-    
-      
-      <% @post.comments.each do |comment| %>
-        <% unless comment.new_record? %>
-          <div class ="comments">
+          </div>
+
+          <div class="span6"> 
+            <% @post.comments.each do |comment| %>
+            <% unless comment.new_record? %>
+             <div class ="comments">
               <p>
               <strong>Visitante:</strong>
               <%= comment.visitor %>
@@ -57,8 +66,21 @@
               <strong>Comment:</strong>
               <%=  comment.message %> 
             </div>
+
           <% end %>
         <% end %>
+      <ul class="pager">
+        <li><a href="#">Previous</a></li>
+        <li><a href="#">Next</a></li>
+        </ul>
+      </div>
+        </div>
+      </div>
+    </div>
+    
+      
+
+     
  
   </div>
 </div>

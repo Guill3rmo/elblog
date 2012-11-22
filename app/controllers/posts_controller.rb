@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   	@posts = Post.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html 
       format.json { render json: @post }
     end
   end
@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   	 @post = Post.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html 
       format.json { render json: @post }
     end
   end
@@ -20,14 +20,18 @@ class PostsController < ApplicationController
   def new
   	@post = Post.new
     respond_to do |format|
-      format.html # new.html.erb
+      format.html 
       format.json { render json: @post }
     end
+  end
+  
+  def edit
+  @post = Post.find(params[:id])
   end
 
   def create
     @post = Post.new(params[:post])
-
+ 
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'post creado.' }
@@ -38,5 +42,31 @@ class PostsController < ApplicationController
       end
     end
   end
+
+ def update
+    @post = Post.find(params[:id])
+
+    respond_to do |format|
+      if @post.update_attributes(params[:post])
+        format.html { redirect_to @post, notice: 'done'}
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @post.errors, post: :unprocessable_entity }
+      end
+    end
+  end
+
+ 
+  def destroy
+    @post = post.find(params[:id])
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to posts_url }
+      format.json { head :ok }
+    end
+  end
+
 
 end
