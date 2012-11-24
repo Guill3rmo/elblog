@@ -1,11 +1,20 @@
 <% unless comment.new_record? %>
-  <div class ="comments">
-    <p>
-      <strong>Visitante:</strong>
-      <%= comment.visitor %>
-    </p>
-    <p>
-      <strong>Comment:</strong>
-      <%=  comment.message %> 
-  </div>
+  	<div class ="comments">
+    	
+       
+        <% if comment.likes.where(blogger_id: current_blogger.id).first.nil? %>
+
+          <%=link_to "Like" , comment_likes_path(comment), method: :post, remote: true%>
+        <% else %>  
+          <%=link_to "UnLike" , comment_like_path(comment, comment.likes.first.id), method: :delete, remote: true%>
+      		<% end %>
+          <p>
+
+        <strong>Autor:</strong>
+      	 <%= comment.visitor %>
+    	  </p>
+    	  <p>
+    		<strong>Comentario:</strong>
+      		<%=  comment.message %> 
+  	</div>
 <% end %>

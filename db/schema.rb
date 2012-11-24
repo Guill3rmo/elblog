@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122213021) do
+ActiveRecord::Schema.define(:version => 20121124153955) do
 
   create_table "bloggers", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -46,9 +46,21 @@ ActiveRecord::Schema.define(:version => 20121122213021) do
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.integer  "blogger_id"
   end
 
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
+
+  create_table "likes", :force => true do |t|
+    t.integer  "blogger_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comment_id"
+  end
+
+  add_index "likes", ["blogger_id"], :name => "index_likes_on_blogger_id"
+  add_index "likes", ["comment_id"], :name => "index_likes_on_comment_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title"

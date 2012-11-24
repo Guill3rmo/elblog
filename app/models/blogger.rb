@@ -11,7 +11,9 @@ class Blogger < ActiveRecord::Base
 validates :full_name, presence: true    
 validates :email, presence: true    
 validates :password, presence: true   
-validates :password_confirmation, presence: true    
+validates :password_confirmation, presence: true 
+
+  has_many :likes   
 
 def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
   user = Blogger.where(:provider => auth.provider, :uid => auth.uid).first
@@ -36,4 +38,5 @@ def self.new_with_session(params, session)
 
 #Relacion
   has_many :posts
+  has_many :comments
 end

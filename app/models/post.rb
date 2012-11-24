@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
 	attr_accessible :title , :content, :created_at, :blogger_id , :full_name, :image
 	has_many :comments
+	has_many :anonymous_comments
+	has_many :user_comments
 	belongs_to :blogger
 
 has_attached_file :image
